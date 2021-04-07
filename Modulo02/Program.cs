@@ -10,6 +10,10 @@ namespace Modulo02
             var v2 = new vector(new List<int> { 1, 2 });
             Console.WriteLine(v2.Componentes.ToString());
             Console.WriteLine(v2.Dimension);
+            v2[0] = 5;
+            Console.WriteLine("Indexador");
+            Console.WriteLine(v2[0]);
+            Console.WriteLine(v2.Componentes[0]);
             v2.Nombre = "Vector 1";
             Console.WriteLine(v2.Nombre);
             Console.Read();
@@ -18,6 +22,17 @@ namespace Modulo02
         {
             //campo
             private List<int> _componentes;
+            public int this[int i]
+            {
+                get
+                {
+                    return _componentes[i];                
+                }
+                set
+                {
+                    _componentes[i] = value;
+                }
+            }
 
             public int Dimension { get { return _componentes.Count; } }
 
