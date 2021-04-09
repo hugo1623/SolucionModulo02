@@ -8,12 +8,15 @@ namespace Modulo02
         static void Main(string[] args)
         {   var v1 = new Vector(new List<int> { 3, 4 });
             var v2 = new Vector(new List<int> { 1, 2 });
+            List<Vector> vectores = new List<Vector>();
+            vectores.Add(v1);
+            vectores.Add(v2);
             Vector vectorSuma = v1.Suma(v2);
             Vector vectorSuma2 = v1 + v2;
             Console.Read();
         }
     }
-    class Vector
+    struct Vector
     {   //campo
         private List<int> _componentes;
         public List<int> Componentes
