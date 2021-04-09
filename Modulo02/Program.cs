@@ -6,55 +6,28 @@ namespace Modulo02
     class Program
     {
         static void Main(string[] args)
-        {   var v1 = new Vector(new List<int> { 3, 4 });
-            var v2 = new Vector(new List<int> { 1, 2 });
-            List<Vector> vectores = new List<Vector>();
-            vectores.Add(v1);
-            vectores.Add(v2);
-            Vector vectorSuma = v1.Suma(v2);
-            Vector vectorSuma2 = v1 + v2;
-            Console.Read();
+        {
+            double numero1 = 5;
+            double numero2 = 7;
+            double numero3 = 10;
+            double promedio = CalcularPromedio(numero1, numero2, numero3);
+        }
+
+        private static double CalcularPromedio(double numero1, double numero2, double numero3)
+        {
+            throw new NotImplementedException();
+        }
+
+        ///Metodo
+        private static double CalcularPromedio(int numero1, int numero2)
+        {
+            return (numero1 + numero2) / 2.0;
+        }
+
+        private static double CalcularPromedio(double numero1, double numero2)
+        {
+            return (numero1 + numero2) / 2.0;
         }
     }
-    struct Vector
-    {   //campo
-        private List<int> _componentes;
-        public List<int> Componentes
-        {
-            get
-            {
-                return _componentes;
-            }
-        }
-        //Indexador
-        public int this[int i]
-        {
-            get { return _componentes[i]; }
-            set { _componentes[i] = value; }
-        }
-        public int Dimension { get { return _componentes.Count; } }
-        //Costructor
-        public Vector(List<int> componentes)
-        {
-            _componentes = componentes;
-        }
-        public static Vector operator +(Vector vector1, Vector vector2)
-        {
-         return vector1.Suma(vector2);
-        }
-            public Vector Suma(Vector v2)
-            {
-                if(Dimension != v2.Dimension)
-                {
-                    throw new ApplicationException("La dimensiones no son iguales");
-                }
-                List<int> resultado = new List<int>();
 
-                for(int i=0; i< Dimension; i++)
-                {
-                    resultado.Add(this[i] + v2[i]);
-                }
-                return new Vector(resultado);
-            }
-        }   
 }
