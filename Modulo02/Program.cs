@@ -10,24 +10,19 @@ namespace Modulo02
             double numero1 = 5;
             double numero2 = 7;
             double numero3 = 10;
-            double promedio = CalcularPromedio(numero1, numero2, numero3);
+            double promedio = CalcularPromedio(4, 5, 6, 7, 3, 5, 7,10,100);
+            
+        }
+        private static double CalcularPromedio(params int[] numeros)
+        {
+            double suma = 0;
+            foreach (var numero in numeros)
+            {
+                suma = suma + numero;
+            }
+            return suma / numeros.Length;
         }
 
-        private static double CalcularPromedio(double numero1, double numero2, double numero3)
-        {
-            throw new NotImplementedException();
-        }
-
-        ///Metodo
-        private static double CalcularPromedio(int numero1, int numero2)
-        {
-            return (numero1 + numero2) / 2.0;
-        }
-
-        private static double CalcularPromedio(double numero1, double numero2)
-        {
-            return (numero1 + numero2) / 2.0;
-        }
     }
 
 }
