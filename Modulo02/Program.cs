@@ -7,22 +7,22 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            double numero1 = 5;
-            double numero2 = 7;
-            double numero3 = 10;
-            double promedio = CalcularPromedio(4, 5, 6, 7, 3, 5, 7,10,100);
-            
+            metodo1("valor1");
+            Console.WriteLine("");
+            metodo1("Felipe", "Mario");
+            Console.Read();
         }
-        private static double CalcularPromedio(params int[] numeros)
+        private static void metodo1(string v1)
         {
-            double suma = 0;
-            foreach (var numero in numeros)
-            {
-                suma = suma + numero;
-            }
-            return suma / numeros.Length;
+            metodo1(v1, "valor2");
         }
-
+        private static void metodo1( string v1, string v2 = "valor3")
+        {
+            Console.WriteLine(v1);
+            Console.WriteLine(v2);
+        }
+       
+            
     }
 
 }
