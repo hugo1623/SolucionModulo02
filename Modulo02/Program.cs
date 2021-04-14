@@ -7,26 +7,32 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            Console.WriteLine( 5.ElevadoALa(3));
-            Console.WriteLine(7.ElevadoALa(2));
-            Console.WriteLine(15.Double());
             Console.Read();
         }
     }
-
-        public static class   IntegerExtensionMethods
+    static class Matematicas
+    {
+        const double PI = 3.1415;
+        public static int Suma(int sumando1, int sumando2)
         {
-            public static double ElevadoALa(this int valor, int exponente)
-                {
-                    return Math.Pow(valor, exponente);
-                }
-            public static double Double(this int valor)
-                {
-                    return valor * 2;
-                }
-
+            return sumando1 + sumando2;
         }
-       
-    
-
+        public static double AreaDelCirculo(int radio)
+        {
+            return radio * radio * PI;
+        }
+        
+    }
+    class Factura
+    {
+         public int Id { get; set; }
+         public decimal Monto { get; set; }
+    }
+    class Facturarepositorio
+    {
+        public void GuardarEnBaseDeDatos(Factura factura)
+        {
+            //Codigo para guerdar la factura en la base de Datos
+        }
+    }
 }
