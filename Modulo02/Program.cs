@@ -7,32 +7,30 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
+            var iteradordeLista = new IteradorDeLista();
+            iteradordeLista._lista = new List<int>() { 1, 2, 3 };
+            iteradordeLista.EscribirLista();
             Console.Read();
+
         }
+
     }
-    static class Matematicas
+    class IteradorDeLista
     {
-        const double PI = 3.1415;
-        public static int Suma(int sumando1, int sumando2)
+        public IteradorDeLista()
         {
-            return sumando1 + sumando2;
+            _lista=new List<int>();
         }
-        public static double AreaDelCirculo(int radio)
+        public List<int> _lista;
+        public void EscribirLista()
         {
-            return radio * radio * PI;
+            foreach(var item in _lista)
+                {
+                    Console.WriteLine(item);
+                }
         }
-        
+            
     }
-    class Factura
-    {
-         public int Id { get; set; }
-         public decimal Monto { get; set; }
-    }
-    class Facturarepositorio
-    {
-        public void GuardarEnBaseDeDatos(Factura factura)
-        {
-            //Codigo para guerdar la factura en la base de Datos
-        }
-    }
+
+    
 }
