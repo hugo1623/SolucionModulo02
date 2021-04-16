@@ -7,30 +7,54 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            var iteradordeLista = new IteradorDeLista();
-            iteradordeLista._lista = new List<int>() { 1, 2, 3 };
-            iteradordeLista.EscribirLista();
+            List<Animal> animales = new List<Animal>();
+            animales.Add(new Vaca("kyra"));
+            animales.Add(new Oveja("lulu"));
+
+            foreach(var animal in animales)
+            {
+                animal.HacerRuido();
+            }
             Console.Read();
-
         }
-
     }
-    class IteradorDeLista
+    class Animal
     {
-        public IteradorDeLista()
+        public string Nombre { get; set; }
+        public virtual void HacerRuido()
         {
-            _lista=new List<int>();
+            Console.WriteLine(" {0} hacer ruido", Nombre);
         }
-        public List<int> _lista;
-        public void EscribirLista()
-        {
-            foreach(var item in _lista)
-                {
-                    Console.WriteLine(item);
-                }
-        }
-            
     }
-
+    class Vaca:Animal
+    {
+        public Vaca(string nombre)
+        {
+            Nombre = nombre;
+        }
+        public void HacerRuido()
+        {
+            Console.WriteLine("{0} dice muuu", Nombre);
+        }
+        public void Limpiar()
+        {
+            Console.WriteLine("La vaca {0}ha sido limpiada", Nombre);
+        }
+    }
+    class Oveja:Animal
+    {
+        public Oveja(String nombre)
+        {
+            Nombre = nombre;
+        }
+        public void HacerRuido()
+        {
+            Console.WriteLine("{0} dice veee", Nombre);
+        }
+        public void Limpiar()
+        {
+            Console.WriteLine("La Obeja {0}ha sido Trasquilada", Nombre);
+        }
+    }
     
 }
