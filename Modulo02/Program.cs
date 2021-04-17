@@ -7,54 +7,55 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            List<Animal> animales = new List<Animal>();
-            animales.Add(new Vaca("kyra"));
-            animales.Add(new Oveja("lulu"));
+            Animal perro = new Perro();
+            Animal gato = new Gato();
+            Animal pelicano = new Pelicano();
+            Animal gusano = new Gusano();
 
-            foreach(var animal in animales)
-            {
-                animal.HacerRuido();
-            }
+            AnimalHacerRuido(perro);
+            AnimalHacerRuido(gato);
+            AnimalHacerRuido(pelicano);
+            AnimalHacerRuido(gusano);
+
             Console.Read();
+
+        }
+        public static void AnimalHacerRuido(Animal animal)
+        {
+            animal.HacerRuido();
         }
     }
     class Animal
     {
-        public string Nombre { get; set; }
         public virtual void HacerRuido()
         {
-            Console.WriteLine(" {0} hacer ruido", Nombre);
+            Console.WriteLine("Ruido Generico");
         }
     }
-    class Vaca:Animal
+    class Perro:Animal
     {
-        public Vaca(string nombre)
+        public override void HacerRuido()
         {
-            Nombre = nombre;
-        }
-        public void HacerRuido()
-        {
-            Console.WriteLine("{0} dice muuu", Nombre);
-        }
-        public void Limpiar()
-        {
-            Console.WriteLine("La vaca {0}ha sido limpiada", Nombre);
+            Console.WriteLine("woof");
         }
     }
-    class Oveja:Animal
+    class Gato:Animal
     {
-        public Oveja(String nombre)
+        public override void HacerRuido()
         {
-            Nombre = nombre;
-        }
-        public void HacerRuido()
-        {
-            Console.WriteLine("{0} dice veee", Nombre);
-        }
-        public void Limpiar()
-        {
-            Console.WriteLine("La Obeja {0}ha sido Trasquilada", Nombre);
+            Console.WriteLine("Miau");
         }
     }
-    
+    class Pelicano : Animal
+    {
+        public override void HacerRuido()
+        {
+            base.HacerRuido();
+        }
+    }
+    class Gusano:Animal
+    {
+
+    }
+
 }
