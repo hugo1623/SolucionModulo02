@@ -29,17 +29,24 @@ namespace Modulo02
     {
         public virtual void HacerRuido()
         {
+            
             Console.WriteLine("Ruido Generico");
         }
+        protected void MetodoProtegido()
+        {
+
+        }
     }
-    class Perro:Animal
+    class Perro : Animal
     {
         public override void HacerRuido()
         {
             Console.WriteLine("woof");
+            MetodoProtegido();
         }
+
     }
-    class Gato:Animal
+    class Gato : Animal
     {
         public override void HacerRuido()
         {
@@ -53,9 +60,8 @@ namespace Modulo02
             base.HacerRuido();
         }
     }
-    class Gusano:Animal
+    class Gusano : Animal
     {
 
     }
-
 }
