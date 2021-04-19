@@ -7,61 +7,42 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            Animal perro = new Perro();
-            Animal gato = new Gato();
-            Animal pelicano = new Pelicano();
-            Animal gusano = new Gusano();
-
-            AnimalHacerRuido(perro);
-            AnimalHacerRuido(gato);
-            AnimalHacerRuido(pelicano);
-            AnimalHacerRuido(gusano);
-
-            Console.Read();
-
+            var miniMensaje = new EnviarMensaje();
+            var enviarCorreo = new EnviarCorreo();
+            Enviar(miniMensaje), "prueba";
+            Enviar(enviarCorreo), "prueba2";
         }
-        public static void AnimalHacerRuido(Animal animal)
+        public static void Enviar(IEnviarMensaje mensajero, string mensaje)
         {
-            animal.HacerRuido();
+            mensajero.EnviarMensaje(mensaje);
         }
+
     }
-    class Animal
+    interface IEnviarMensaje
     {
-        public virtual void HacerRuido()
+        void EnviarMensaje(string mensaje);
+    }
+
+    class EnviarMensaje : IEnviarMensaje
+    {
+        public void Enviarmensaje(string mensaje)
         {
             
-            Console.WriteLine("Ruido Generico");
+            Console.WriteLine("enviando Minimensaje ");
         }
-        protected void MetodoProtegido()
+        public string CualquierMetodo()
         {
-
-        }
-    }
-    class Perro : Animal
-    {
-        public override void HacerRuido()
-        {
-            Console.WriteLine("woof");
-            MetodoProtegido();
+            return "Lo que sea";
         }
 
     }
-    class Gato : Animal
+    class EnviarCorreo : IEnviarMensaje
     {
-        public override void HacerRuido()
+        public void EnviarMensaje(string mensaje)
         {
-            Console.WriteLine("Miau");
+            Console.WriteLine("EnviarCorreo");
         }
     }
-    class Pelicano : Animal
-    {
-        public override void HacerRuido()
-        {
-            base.HacerRuido();
-        }
-    }
-    class Gusano : Animal
-    {
 
-    }
+
 }
