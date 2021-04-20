@@ -9,21 +9,21 @@ namespace Modulo02
         {
             var miniMensaje = new EnviarMensaje();
             var enviarCorreo = new EnviarCorreo();
-            Enviar(miniMensaje), "prueba";
-            Enviar(enviarCorreo), "prueba2";
+            Enviar(miniMensaje, "prueba");
+            Enviar(enviarCorreo, "prueba2");
+
+            Console.Read();
         }
         public static void Enviar(IEnviarMensaje mensajero, string mensaje)
         {
             mensajero.EnviarMensaje(mensaje);
         }
-
     }
     interface IEnviarMensaje
     {
         void EnviarMensaje(string mensaje);
     }
-
-    class EnviarMensaje : IEnviarMensaje
+    class EnviarMensaje: IEnviarMensaje
     {
         public void Enviarmensaje(string mensaje)
         {
@@ -34,7 +34,10 @@ namespace Modulo02
         {
             return "Lo que sea";
         }
-
+        void IEnviarMensaje.EnviarMensaje(string mensaje)
+        {
+            
+        }
     }
     class EnviarCorreo : IEnviarMensaje
     {
