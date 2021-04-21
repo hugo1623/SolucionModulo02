@@ -7,45 +7,22 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            var miniMensaje = new EnviarMensaje();
-            var enviarCorreo = new EnviarCorreo();
-            Enviar(miniMensaje, "prueba");
-            Enviar(enviarCorreo, "prueba2");
-
+            object o = DateTime.Today;
+            if(o is DateTime)
+            {
+                var fecha = (DateTime)o;
+            }
+            
+            else if (o is string)
+            {
+                var unString = (string)o;
+            }
+           
             Console.Read();
-        }
-        public static void Enviar(IEnviarMensaje mensajero, string mensaje)
+        }   
+        public static void ToStringObjeto(Object obj)
         {
-            mensajero.EnviarMensaje(mensaje);
+            Console.WriteLine(obj.ToString());
         }
     }
-    interface IEnviarMensaje
-    {
-        void EnviarMensaje(string mensaje);
-    }
-    class EnviarMensaje: IEnviarMensaje
-    {
-        public void Enviarmensaje(string mensaje)
-        {
-            
-            Console.WriteLine("enviando Minimensaje ");
-        }
-        public string CualquierMetodo()
-        {
-            return "Lo que sea";
-        }
-        void IEnviarMensaje.EnviarMensaje(string mensaje)
-        {
-            
-        }
-    }
-    class EnviarCorreo : IEnviarMensaje
-    {
-        public void EnviarMensaje(string mensaje)
-        {
-            Console.WriteLine("EnviarCorreo");
-        }
-    }
-
-
 }
