@@ -19,7 +19,17 @@ namespace Modulo02
             }
            
             Console.Read();
-        }   
+        }  
+        
+        public class EnviarMensaje
+        {
+
+        }
+        interface IEnviarMensaje
+        {
+            void EnviarMensaje(string mensaje);
+        }
+
         public static void ToStringObjeto(Object obj)
         {
             Console.WriteLine(obj.ToString());
