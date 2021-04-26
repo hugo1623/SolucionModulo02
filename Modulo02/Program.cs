@@ -7,32 +7,44 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            object o = DateTime.Today;
-            if(o is DateTime)
-            {
-                var fecha = (DateTime)o;
-            }
-            
-            else if (o is string)
-            {
-                var unString = (string)o;
-            }
-           
+            var enviadorSMS = new EnviarMiniMensaje();
+            var enviadorMensaje = new EnviadorMensaje(enviadorSMS);
+            enviadorMensaje.EnviarMensaje("Un mensaje");
             Console.Read();
-        }  
-        
-        public class EnviarMensaje
-        {
-
-        }
-        interface IEnviarMensaje
-        {
-            void EnviarMensaje(string mensaje);
-        }
-
-        public static void ToStringObjeto(Object obj)
-        {
-            Console.WriteLine(obj.ToString());
         }
     }
+    public class EnviadorMensaje
+    {
+        public EnviadorMensaje(IEnviandorMensaje enviadorMensaje)
+        {
+            _enviadorMensaje = enviadorMensaje;
+        }
+        private IEnviandorMensaje _enviadorMensaje;
+
+        public void EnviarMensaje(string mensaje)
+        {
+            _enviadorMensaje.EnviarMensaje(mensaje);
+        }
+    }
+     public interface IEnviandorMensaje
+    {
+       public void EnviarMensaje(string mensaje);
+    }
+
+    class EnviarMiniMensaje: IEnviandorMensaje
+    {
+        public void EnviarMensaje(string mensaje)
+        {
+            Console.WriteLine("Enviando Minimensaje");
+        }
+    }
+
+    class EnviarCorreo: IEnviandorMensaje
+    {
+        public void EnviarMensaje(string mensaje)
+        {
+            Console.WriteLine("Enviando Correo");
+        }
+    }
+   
 }
