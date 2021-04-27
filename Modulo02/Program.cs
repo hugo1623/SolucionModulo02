@@ -7,58 +7,26 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            var enviadorMensajeDependencia = FactoriaEnviadorMensaje.Factoria("sms");
-           // var enviadorSMS = new EnviarMiniMensaje();
-            var enviadorMensaje = new EnviadorMensaje(enviadorMensajeDependencia);
-            enviadorMensaje.EnviarMensaje("Un mensaje");
+            var animalito1 = new { animal = "perro", nombre = "Max", vidas = 1 };
+            var animalito2 = new { animal = "gato", nombre = "Kyra", vidas = 7 };
+            //dynamic es un truco de C# para permitirns utilixar tipos variables.
+            List<dynamic> animalitos = new List<dynamic>();
+
+            animalitos.Add(animalito1);
+            animalitos.Add(animalito2);
+
+            foreach (dynamic animalito in animalitos)
+            {
+                Console.WriteLine("El {0} de nombre {1} tiene {2} vidad",
+                    animalito.animal,animalito.nombre, animalito.vidas);
+            }
             Console.Read();
         }
     }
-    public static class FactoriaEnviadorMensaje
+    //Clase persona
+    class Persona
     {
-        public static IEnviandorMensaje Factoria(string parametro)
-        {
-            if (parametro == "sms")
-            {
-                return new EnviarMiniMensaje();
-            }
-            else if (parametro == "correo") ;
-            {
-                return new EnviarCorreo();
-            }
-        }
-    }
-    public class EnviadorMensaje
-    {
-        public EnviadorMensaje(IEnviandorMensaje enviadorMensaje)
-        {
-            _enviadorMensaje = enviadorMensaje;
-        }
-        private IEnviandorMensaje _enviadorMensaje;
-
-        public void EnviarMensaje(string mensaje)
-        {
-            _enviadorMensaje.EnviarMensaje(mensaje);
-        }
-    }
-    public interface IEnviandorMensaje
-    {
-        public void EnviarMensaje(string mensaje);
-    }
-
-    class EnviarMiniMensaje : IEnviandorMensaje
-    {
-        public void EnviarMensaje(string mensaje)
-        {
-            Console.WriteLine("Enviando Minimensaje");
-        }
-    }
-
-    class EnviarCorreo : IEnviandorMensaje
-    {
-        public void EnviarMensaje(string mensaje)
-        {
-            Console.WriteLine("Enviando Correo");
-        }
-    }
+        public string Nombre { get; set; }
+        public int Edad { get; set; }
+    }    
 }
