@@ -7,10 +7,25 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            var enviadorSMS = new EnviarMiniMensaje();
-            var enviadorMensaje = new EnviadorMensaje(enviadorSMS);
+            var enviadorMensajeDependencia = FactoriaEnviadorMensaje.Factoria("sms");
+           // var enviadorSMS = new EnviarMiniMensaje();
+            var enviadorMensaje = new EnviadorMensaje(enviadorMensajeDependencia);
             enviadorMensaje.EnviarMensaje("Un mensaje");
             Console.Read();
+        }
+    }
+    public static class FactoriaEnviadorMensaje
+    {
+        public static IEnviandorMensaje Factoria(string parametro)
+        {
+            if (parametro == "sms")
+            {
+                return new EnviarMiniMensaje();
+            }
+            else if (parametro == "correo") ;
+            {
+                return new EnviarCorreo();
+            }
         }
     }
     public class EnviadorMensaje
@@ -26,12 +41,12 @@ namespace Modulo02
             _enviadorMensaje.EnviarMensaje(mensaje);
         }
     }
-     public interface IEnviandorMensaje
+    public interface IEnviandorMensaje
     {
-       public void EnviarMensaje(string mensaje);
+        public void EnviarMensaje(string mensaje);
     }
 
-    class EnviarMiniMensaje: IEnviandorMensaje
+    class EnviarMiniMensaje : IEnviandorMensaje
     {
         public void EnviarMensaje(string mensaje)
         {
@@ -39,12 +54,11 @@ namespace Modulo02
         }
     }
 
-    class EnviarCorreo: IEnviandorMensaje
+    class EnviarCorreo : IEnviandorMensaje
     {
         public void EnviarMensaje(string mensaje)
         {
             Console.WriteLine("Enviando Correo");
         }
     }
-   
 }
