@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Modulo02
 {
@@ -7,51 +10,30 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            Animal perro = new Perro();
-            Animal gato = new Gato();
-
-            AnimalHacerRuido(perro);
-            AnimalHacerRuido(gato);
+            var persona1 = new Persona() { Nombre = "Luis" };
+            var xml_persona1 = Serializar<Persona>(persona1);
+            var empresa1= new Empresa() { Direccion = "Fm" };
+            var xml_empresa1 = Serializar<Empresa>(empresa1);
         }
-        private static void AnimalHacerRuido(Animal animal)
+        private static string Serializar<T>(T valor)
         {
-            animal.HacerRuido();
-        }
+            var serializador = new XmlSerializer(typeof(T));
+            using (var escritorString = new StringWriter())
+            {
+                using (var escritor = XmlWriter.Create(escritorString))
+                {
+                    serializador.Serialize(escritor, valor);
+                    return escritorString.ToString();
+                }
+            }
+        }     
     }
-    
-   abstract class Animal
+   public class Persona
     {
-        public virtual void HacerRuido()
-        {
-            Console.WriteLine("Ruido generico");
-        }
-        protected void MetodoProtegido()
-        {
-
-        }
-    }    
-    class Perro: Animal
-    {
-        public override void HacerRuido()
-        {
-            Console.WriteLine("Woof");
-            MetodoProtegido();
-        }
-        public void ElBaile()
-        {
-            Console.WriteLine(" Del Perrito");
-        }
+        public string Nombre { get; set; }
     }
-    class Gato: Animal
+   public class Empresa
     {
-        public override void HacerRuido()
-        {
-            Console.WriteLine("Miauu");
-            MetodoProtegido();
-        }
-        public void ElBaile()
-        {
-            Console.WriteLine(" Del Gato");
-        }
+        public string Direccion { get; set; }
     }
 }
