@@ -1,24 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml;
-using System.Xml.Serialization;
-
 namespace Modulo02
 {
     class Program
     {
-        const double PI = 3.14;
-        static readonly double PI_2 = RepositorioDeValores.PI;
-        static void Main(string[] args)
+        static void Main(String[] arg)
         {
-            var edad = 9;
-            edad = 4;
-            edad = 8;
-        } 
+            var miDobleColeccion = new MiDobleColeccion<string, int>();
+            miDobleColeccion.Agregar("Hugo", 26);
+        }
     }
-    public static class RepositorioDeValores
+    interface IMiDoubleColeccion<T,M>
     {
-        public static double PI = 3.1415;
+        void Agregar(T valorT, M valorM);
+    }
+
+    class MiDobleColeccion<T, M>: IMiDoubleColeccion<T,M>
+    {
+        public List<T> MiListaDeT { get; set; }
+        public List<M> MiListaDeM { get; set; }
+
+        public MiDobleColeccion()
+        {
+            MiListaDeT = new List<T>();
+            MiListaDeM = new List<M>();
+        }
+        public void Agregar(T valorT, M valorM)
+        {
+            MiListaDeT.Add(valorT);
+            MiListaDeM.Add(valorM);
+        }
     }
 }
