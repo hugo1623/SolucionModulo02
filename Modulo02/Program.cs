@@ -8,32 +8,17 @@ namespace Modulo02
 {
     class Program
     {
+        const double PI = 3.14;
+        static readonly double PI_2 = RepositorioDeValores.PI;
         static void Main(string[] args)
         {
-            var persona1 = new Persona() { Nombre = "Luis" };
-            var xml_persona1 = Serializar<Persona>(persona1);
-            var empresa1= new Empresa() { Direccion = "Fm" };
-            var xml_empresa1 = Serializar<Empresa>(empresa1);
-        }
-        private static string Serializar<T>(T valor)
-        {
-            var serializador = new XmlSerializer(typeof(T));
-            using (var escritorString = new StringWriter())
-            {
-                using (var escritor = XmlWriter.Create(escritorString))
-                {
-                    serializador.Serialize(escritor, valor);
-                    return escritorString.ToString();
-                }
-            }
-        }     
+            var edad = 9;
+            edad = 4;
+            edad = 8;
+        } 
     }
-   public class Persona
+    public static class RepositorioDeValores
     {
-        public string Nombre { get; set; }
-    }
-   public class Empresa
-    {
-        public string Direccion { get; set; }
+        public static double PI = 3.1415;
     }
 }
