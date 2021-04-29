@@ -6,29 +6,27 @@ namespace Modulo02
     {
         static void Main(String[] arg)
         {
-            var miDobleColeccion = new MiDobleColeccion<string, int>();
-            miDobleColeccion.Agregar("Hugo", 26);
-        }
-    }
-    interface IMiDoubleColeccion<T,M>
-    {
-        void Agregar(T valorT, M valorM);
-    }
+            List<string> nombres = new List<string>();
+            nombres.Add("Hugo");
+            nombres.Add("Luis");
+            nombres.Add("5");
 
-    class MiDobleColeccion<T, M>: IMiDoubleColeccion<T,M>
-    {
-        public List<T> MiListaDeT { get; set; }
-        public List<M> MiListaDeM { get; set; }
+            List<int> numeros = new List<int>() { 1, 2, 3, 4, 5, 6 };
+            numeros.Add(0);
+            // remueve un elemento en especifico Nro 3 ahora la lista sera {1,2,4,5,6}
+            numeros.Remove(3);
+            // remueve el primer elemeneto de indice 0 ={2,3,4,5,6}
+            numeros.RemoveAt(0);
+            // remueve el ultimo elemento 
+            numeros.RemoveAt(numeros.Count - 1);
+            //insertar un elemento en una posicion especifica
+            numeros.Insert(0, 100);
+            numeros.Insert(4, -100);
 
-        public MiDobleColeccion()
-        {
-            MiListaDeT = new List<T>();
-            MiListaDeM = new List<M>();
-        }
-        public void Agregar(T valorT, M valorM)
-        {
-            MiListaDeT.Add(valorT);
-            MiListaDeM.Add(valorM);
+            var primerelementoDeLaLista = numeros[0];
+
+            Console.Read();
         }
     }
+ 
 }
