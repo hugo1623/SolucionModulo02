@@ -1,37 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace Modulo02
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Stack<string> stack = new Stack<string>();
+            HashSet<int> conjunto1 = new HashSet<int>();
 
-            Console.WriteLine("Primer Elemento Insertado:");
-            Console.WriteLine("A");
-            stack.Push("A");
+            conjunto1.Add(5);
+            conjunto1.Add(7);
 
-            Console.WriteLine("Segundo Elemento Insertado:");
-            Console.WriteLine("B");
-            stack.Push("B");
+            HashSet<int> conjunto2 = new HashSet<int>();
 
-            Console.WriteLine("Tercero Elemento Insertado:");
-            Console.WriteLine("C");
-            stack.Push("C");
+            conjunto2.Add(5);
+            conjunto2.Add(8);
+            //union=5,7,8
+            HashSet<int> union_set1_set2 = new HashSet<int>(conjunto1);
+            union_set1_set2.UnionWith(conjunto2);
+            //interseccion=5
+            HashSet<int> interseccion_set1_set2 = new HashSet<int>(conjunto1);
+            interseccion_set1_set2.IntersectWith(conjunto2);
+            //diferencia de aquellos elementos que no se encuentran en el conjunto1=7
+            HashSet<int> diferencia_set1_set2 = new HashSet<int>(conjunto1);
+            diferencia_set1_set2.ExceptWith(conjunto2);
+            // Diferencia entre los 2 conjuntos= 7,8
+            HashSet<int> diferencia_simetrica_set1_set2 = new HashSet<int>(conjunto1);
+            diferencia_simetrica_set1_set2.SymmetricExceptWith(conjunto2);
 
-            Console.WriteLine("Primer Elemento Extraido:");
-            // metodo pop no recive parametros y nos devuelve
-            // el ultimo elemento de la lista
-            var primerElementoRemovido = stack.Pop();
-            Console.WriteLine(primerElementoRemovido);
-
-            Console.WriteLine("Segundo Elemento Extraido:");
-            Console.WriteLine(stack.Pop());
-            Console.WriteLine("Tercero Elemento Extraido:");
-            Console.WriteLine(stack.Pop());
-            Console.WriteLine();
-            Console.Read();
+            //Utilizando un conjunto de elementos vamos a eliminar los elementos comunes de las lista
+            List<int> numeros = new List<int>() { 1, 2, 3, 5, 6, 7, 3, 2, 2, 1, 3, 42, 2, 3, 34, 2, 2, 2, 3 };
+            numeros = new HashSet<int>(numeros).ToList();
         }
     }
  
