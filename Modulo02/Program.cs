@@ -4,27 +4,32 @@ namespace Modulo02
 {
     class Program
     {
-        static void Main(String[] args)
+        static void Main(string[] args)
         {
-            Queue<string> queue = new Queue<string>();
+            Stack<string> stack = new Stack<string>();
 
             Console.WriteLine("Primer Elemento Insertado:");
-            Console.WriteLine("Primero");
-            queue.Enqueue("Primero");
+            Console.WriteLine("A");
+            stack.Push("A");
 
             Console.WriteLine("Segundo Elemento Insertado:");
-            Console.WriteLine("Segundo");
-            queue.Enqueue("Segundo");
+            Console.WriteLine("B");
+            stack.Push("B");
 
             Console.WriteLine("Tercero Elemento Insertado:");
-            Console.WriteLine("Tercero");
-            queue.Enqueue("Tercero");
-            /*Podemos iterar el queue para leer su contenido*/
-            /*el queue esta vacio en este momento*/
-            foreach (var item in queue)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine("C");
+            stack.Push("C");
+
+            Console.WriteLine("Primer Elemento Extraido:");
+            // metodo pop no recive parametros y nos devuelve
+            // el ultimo elemento de la lista
+            var primerElementoRemovido = stack.Pop();
+            Console.WriteLine(primerElementoRemovido);
+
+            Console.WriteLine("Segundo Elemento Extraido:");
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine("Tercero Elemento Extraido:");
+            Console.WriteLine(stack.Pop());
             Console.WriteLine();
             Console.Read();
         }
