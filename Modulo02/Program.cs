@@ -5,25 +5,41 @@ namespace Modulo02
 {
     class Program
     {
+        delegate void DelegadoEjemplo(int c, string h);
+        public delegate string DeEnteroAString(int valor);
         static void Main(string[] args)
         {
-            int[][] jaggeArray = new int[2][];
-            jaggeArray[0] = new int[4];
-            jaggeArray[0][0] = 6;
-            jaggeArray[0][1] = -3;
-            jaggeArray[0][2] = 9;
-            jaggeArray[0][3] = -150;
-            jaggeArray[1] = new int[]
-            {
-                15,6,3,2,6,7,8,-100
-            };
+            var delegadoEjemplo = new DelegadoEjemplo(Ejemplo);
+            delegadoEjemplo(4, "8");
 
-            for (int i = 0; i < jaggeArray.GetLength(0); i++)
-            {
-                var join = string.Join(",", jaggeArray[i]);
-                Console.WriteLine(join);
-            }
+            var deEnteroAString = new DeEnteroAString(FuncionRetornaToString);
+            var deEnteroAStringMasUno = new DeEnteroAString(FuncionRetornaToStringMas1);
+
+            //Console.WriteLine(deEnteroAString(10));
+            //Console.WriteLine(deEnteroAStringMasUno(10));
+
+            Template(deEnteroAString, 10);
             Console.Read();
+        }
+        public static string FuncionRetornaToString(int valor)
+        {
+            return valor.ToString();
+        }
+        public static string FuncionRetornaToStringMas1(int valor)
+        {
+            return (valor+1).ToString();
+        }
+        public static void Ejemplo(int a, string b)
+        {
+
+        }
+       
+        public static void Template(DeEnteroAString algororitmo, int valor)
+        {
+            Console.WriteLine("Hacer algo antes del algoritmo");
+            Console.WriteLine(algororitmo(valor));
+            //algoritmo
+            Console.WriteLine("Hacer algo despues del algoritmo");
         }
     }
 }
