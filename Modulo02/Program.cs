@@ -7,23 +7,26 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            Predicate<Persona> predicado = EsMayorDeEdad;
-            var p = new Persona()
-            {
-                Nombre = "Luis",
-                Edad = 26
-            };
-            Console.WriteLine(predicado(p));
+            //Funcion anonima q se encarga de duplicar un numero entero
+
+            // pq int , int --> pq la funcion anonima va a resivir un
+
+            // parametro de entrada int y va a retornar el doble de ese nro
+            // Ponemos duplicar como nombre a la variable esto sera igual
+            // al valor de entrada q es "X"
+            //En el cuerpo de la funcion {} lo q hace el cuerpo de la funcion
+            //es tomar la x q lo pase como argumento y multiplicarlo x2
+            Func<int, int> duplicar = x => { return x * 2; };
+            Console.WriteLine(duplicar(35));
+
+            Func<int, int> cuadrado = y => { return (int)Math.Pow(y, 2); };
+            Console.WriteLine(cuadrado(8));
+
+            Func<int, double> raiz = z => { return Math.Sqrt(z); };
+            Console.WriteLine(raiz(15));
+   
             Console.Read();
-        }
-        static bool EsMayorDeEdad(Persona persona)
-        {
-            return persona.Edad >= 18;
-        }
+        } 
     }
-    public  class Persona
-    {
-        public string Nombre { get; set; }
-        public int Edad { get; set; }
-    }
+    
 }
