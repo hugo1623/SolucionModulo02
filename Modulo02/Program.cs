@@ -5,19 +5,18 @@ namespace Modulo02
 {
     class Program
     {
-        delegate void DelegadoEjemplo(int c, string h);
         public delegate string DeEnteroAString(int valor);
         static void Main(string[] args)
         {
-            var delegadoEjemplo = new DelegadoEjemplo(Ejemplo);
-            delegadoEjemplo(4, "8");
 
             var deEnteroAString = new DeEnteroAString(FuncionRetornaToString);
             var deEnteroAStringMasUno = new DeEnteroAString(FuncionRetornaToStringMas1);
 
-            //Console.WriteLine(deEnteroAString(10));
-            //Console.WriteLine(deEnteroAStringMasUno(10));
-
+            Console.WriteLine(deEnteroAString(10));
+            Console.WriteLine(deEnteroAStringMasUno(10));
+            Func<int, string> delegateFunc = FuncionRetornaToStringMas1;
+            var resultado = delegateFunc(15);
+            Action<int, string> delegadoAction = Ejemplo;
             Template(deEnteroAString, 10);
             Console.Read();
         }
@@ -33,7 +32,6 @@ namespace Modulo02
         {
 
         }
-       
         public static void Template(DeEnteroAString algororitmo, int valor)
         {
             Console.WriteLine("Hacer algo antes del algoritmo");
