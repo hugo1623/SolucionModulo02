@@ -13,9 +13,26 @@ namespace Modulo02
             {
                 3,5,7,8,2,-3,-100,523,6,22
             };
-            var result = numeros.Where(x => x > 0).ToList();
+            var numerosMayoresQueCero = numeros.Where(x => x > 0).ToList();
+            var numerosMayoresQueCeroPares = numeros.Where(x => x > 0 && x % 2==0).ToList();
+
+            List<Persona> personas = new List<Persona>()
+            {
+                new Persona() { Nombre = "Hugo", Edad = 26 },
+                new Persona(){Nombre ="Kyra", Edad=10},
+                new Persona(){Nombre ="lulu", Edad=13},
+                new Persona(){Nombre ="Dayron", Edad=15}
+
+            };
+
             Console.Read();
-        } 
-    }
+        }
+
+        class Persona
+        {
+            public string Nombre { get; set; }
+            public int Edad { get; set; }
+        }
+
     
 }
