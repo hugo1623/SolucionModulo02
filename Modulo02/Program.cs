@@ -13,10 +13,17 @@ namespace Modulo02
             {
                 3,5,7,8,2,-3,-100,523,6,22
             };
-            //Permite revertir los elementos del medio el 1=3 y el 8=22 no los toca
-            numeros.Reverse(1,8);
+            var primerelemnto = numeros.FirstOrDefault();
 
-           
+            List<Persona> personas = new List<Persona>()
+            {
+                new Persona() { Nombre = "Hugo", Edad = 26 },
+                new Persona(){Nombre ="Kyra", Edad=10},
+                new Persona(){Nombre ="lulu", Edad=13},
+                new Persona(){Nombre ="Dayron", Edad=15}
+            };
+            var personaMenorDeEdad = personas.FirstOrDefault(x => x.Edad < 18);
+
             Console.Read();
         }
     }
