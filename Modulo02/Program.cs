@@ -13,17 +13,8 @@ namespace Modulo02
             {
                 3,5,7,8,2,-3,-100,523,6,22
             };
-            var numerosMayoresQueCero = numeros.Where(x => x > 0).ToList();
-            var numerosMayoresQueCeroPares = numeros.Where(x => x > 0 && x % 2==0).ToList();
-
-            List<Persona> personas = new List<Persona>()
-            {
-                new Persona() { Nombre = "Hugo", Edad = 26 },
-                new Persona(){Nombre ="Kyra", Edad=10},
-                new Persona(){Nombre ="lulu", Edad=13},
-                new Persona(){Nombre ="Dayron", Edad=15}
-
-            };
+            //obteniendo los elementos de indice par
+            var numerosMayoresQueCero = numeros.Where((x, indice) => indice % 2 == 0).ToList();
 
             Console.Read();
         }
@@ -34,5 +25,5 @@ namespace Modulo02
             public int Edad { get; set; }
         }
 
-    
+    }
 }
