@@ -13,16 +13,23 @@ namespace Modulo02
             {
                 3,5,7,8,2,-3,-100,523,6,22
             };
-            var primerelemnto = numeros.FirstOrDefault();
+            var primerelemnto = numeros.FirstOrDefault(x=> x%2 ==0 ); ;
 
             List<Persona> personas = new List<Persona>()
             {
-                new Persona() { Nombre = "Hugo", Edad = 26 },
-                new Persona(){Nombre ="Kyra", Edad=10},
-                new Persona(){Nombre ="lulu", Edad=13},
-                new Persona(){Nombre ="Dayron", Edad=15}
+                new Persona() { Nombre = "Hugo", Edad = 26, Salario=5 },
+                new Persona(){Nombre ="Kyra", Edad=10, Salario=7},
+                new Persona(){Nombre ="lulu", Edad=13, Salario=10},
+                new Persona(){Nombre ="Dayron", Edad=15,Salario=5}
             };
-            var personaMenorDeEdad = personas.FirstOrDefault(x => x.Edad < 18);
+            var nombre = personas.Where(x => x.Edad < 18).Select(x =>
+            new
+            {
+                Edad=x.Edad,
+                Nombre=x.Nombre,
+                Salario=x.Salario
+            }
+            ).FirstOrDefault();
 
             Console.Read();
         }
