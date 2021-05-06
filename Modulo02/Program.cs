@@ -13,7 +13,9 @@ namespace Modulo02
             {
                 3,5,7,8,2,-3,-100,523,6,22
             };
-            var primerelemnto = numeros.Where(x=> x>4).Skip(2).Take(3).ToList() ;
+            var listado = numeros.TakeWhile(x=> x<6).ToList() ;
+            var listado2 = numeros.SkipWhile(x => x < 6).ToList();
+
 
             List<Persona> personas = new List<Persona>()
             {
@@ -25,9 +27,6 @@ namespace Modulo02
             var nombre = personas.Where(x => x.Edad < 18).Select(x =>
             new
             {
-
-
-
                 Edad=x.Edad,
                 Nombre=x.Nombre,
                 Salario=x.Salario
