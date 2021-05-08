@@ -9,49 +9,22 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            List<int> numeros = new List<int>()
+            List<int> listado1= new List<int>()
             {
                 3,5,7,8,2,-3,-100,523,6,22
             };
-            var grupos2= numeros.GroupBy(x=>Math.Abs(x%2)) ;
-            
-            foreach(var clase in grupos2)
+            List<int> listado2 = new List<int>()
             {
-                Console.WriteLine("Numeros cuyo residuo es " + clase.Key);
-                foreach(var numero in clase)
-                {
-                    Console.WriteLine(numero);
-                }
-                Console.WriteLine("");
-            }
-
-            // Ejemplo2: Separando por grupos de Edad
-            List<Persona> personas = new List<Persona>()
-            {
-                new Persona() { Nombre = "Hugo", Edad = 26, Salario=5 },
-                new Persona(){Nombre ="Kyra", Edad=10, Salario=7},
-                new Persona(){Nombre ="lulu", Edad=13, Salario=10},
-                new Persona(){Nombre ="Dayron", Edad=15,Salario=5}
+                2,4,8,16,32,64
             };
-            var GrupoDePersonas = personas.GroupBy(X =>
-            {
-                if(X.Edad <=20)
-                { return "Menor que 20";}
-                else if (X.Edad >= 21 && X.Edad <=40)
-                {return "Entre 21 y 40";}
-                else
-                {return "Mayores que 41";}
-            });
-            foreach (var grupoPersona in GrupoDePersonas)
-            {
-                Console.WriteLine("Grupo de:" + grupoPersona.Key + "---cantidad : "+ grupoPersona.Count());
-                foreach (var persona in grupoPersona)
-                {
-                    Console.WriteLine(persona.Nombre);
-                }
-                Console.WriteLine("");
-            }
-            Console.Read();
+            //instancias
+            var sonParesTodos1 = listado1.All(x => x % 2 == 0);//no cumple ya q no todos son pares 
+            var sonParesTodos2 = listado2.All(x => x % 2 == 0);// si cumple
+
+            //Existe algun elemento que sea mayor que 1000
+            var existeAlgunImpar = listado1.Any(x => x % 2 == 0);// no todos los elementos cumplen con la condicion dada -->tue
+            
+            var existeAlgunNumeroMayorQue100 = listado1.Any(x => x > 1000);//false   
         }
     }
     class Persona
