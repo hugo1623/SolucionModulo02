@@ -9,22 +9,27 @@ namespace Modulo02
     {
         static void Main(string[] args)
         {
-            List<int> listado1= new List<int>()
+            List<int> numeros= new List<int>()
             {
-                3,5,7,8,2,-3,-100,523,6,22
+                1,2,3,4,5
             };
-            List<int> listado2 = new List<int>()
+            var suma = numeros.Sum();
+            List<Persona> personas = new List<Persona>()
             {
-                2,4,8,16,32,64
+                new Persona() { Nombre = "Hugo", Edad = 26, Salario=5 },
+                new Persona(){Nombre ="Kyra", Edad=10, Salario=7},
+                new Persona(){Nombre ="lulu", Edad=13, Salario=10},
+                new Persona(){Nombre ="Dayron", Edad=15,Salario=5}
             };
-            //instancias
-            var sonParesTodos1 = listado1.All(x => x % 2 == 0);//no cumple ya q no todos son pares 
-            var sonParesTodos2 = listado2.All(x => x % 2 == 0);// si cumple
 
-            //Existe algun elemento que sea mayor que 1000
-            var existeAlgunImpar = listado1.Any(x => x % 2 == 0);// no todos los elementos cumplen con la condicion dada -->tue
-            
-            var existeAlgunNumeroMayorQue100 = listado1.Any(x => x > 1000);//false   
+            var totalSalario = personas.Sum(x => x.Salario);
+
+            var miObjeto = new
+            {
+                TotalSalario = personas.Sum(x => x.Salario),
+                Conteo= personas.Count
+
+            };
         }
     }
     class Persona
